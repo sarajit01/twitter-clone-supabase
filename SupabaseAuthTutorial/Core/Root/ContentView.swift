@@ -13,8 +13,8 @@ struct ContentView: View {
     
     var body: some View {
         Group {
-            if let currentUser = authManager.currentUser {
-                Text("Main view");
+            if let currentUserID = authManager.currentUserID {
+               UserProfileView()
             } else {
                 LoginView()
             }

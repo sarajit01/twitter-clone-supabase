@@ -12,6 +12,7 @@ struct RegistrationView: View {
     @Environment(AuthManager.self) private var authManager
     
     @State private var email: String = ""
+    @State private var username: String = ""
     @State private var password: String = ""
     @State private var confirmedPassword: String = ""
     @State private var passwordsMatch = false
@@ -30,6 +31,14 @@ struct RegistrationView: View {
                 VStack(spacing: 8) {
                     
                     TextField("Enter your email", text: $email)
+                        .autocapitalization(.none)
+                        .font(.subheadline)
+                        .padding(12)
+                        .background(Color(.systemGray6))
+                        .cornerRadius(10)
+                        .padding(.horizontal, 24)
+                    
+                    TextField("Enter your username", text: $username)
                         .autocapitalization(.none)
                         .font(.subheadline)
                         .padding(12)
@@ -137,7 +146,7 @@ private extension RegistrationView {
     
     func signUp() {
         Task {
-            await authManager.signUp(email: email, password: password)
+            await authManager.signUp(email: email, password: password, username: username)
         }
     }
     

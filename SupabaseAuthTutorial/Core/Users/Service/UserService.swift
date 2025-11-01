@@ -36,4 +36,18 @@ struct UserService {
         
     }
     
+    func updateProfileImgUrl (_ imageUrl: String) async throws {
+        
+        let uid = try await client.auth.session.user.id.uuidString
+        
+        try await client.from("users")
+            .update(["profileImageUrl" : imageUrl])
+            .eq("id" , value: uid)
+            .execute()
+        
+        
+    }
+    
+    
+    
 }

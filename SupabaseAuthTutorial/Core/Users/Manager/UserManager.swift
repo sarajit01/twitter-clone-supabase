@@ -30,4 +30,16 @@ class UserManager {
         }
     }
     
+    func updateProfileImgUrl(_ imageUrl: String) async {
+        
+        do {
+            try await service.updateProfileImgUrl(imageUrl)
+            self.currentUser?.profileImageUrl = imageUrl
+        } catch {
+            print("Debug error uploading profile image: \(error.localizedDescription)")
+        }
+        
+    }
+    
+    
 }

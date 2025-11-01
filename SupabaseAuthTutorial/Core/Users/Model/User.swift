@@ -8,10 +8,10 @@
 import Foundation
 struct User: Identifiable, Codable {
      
-    let id: String
+    var id: String
     let email: String
     let username: String
     let createdAt: Date
-    let profileImageUrl: String? = nil
+    var profileImageUrl: String?
     
 }

@@ -123,4 +123,6 @@ private extension UserProfileView {
 
 #Preview {
     UserProfileView()
+        .environment(AuthManager())
+        .environment(UserManager())
 }

@@ -36,18 +36,22 @@ struct PostComposerView: View {
                 
             }.padding()
             
-            .navigationTitle("Create Post")
+            .navigationTitle("New Post")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 
                 ToolbarItem(placement: .topBarLeading) {
-                    Button(action: { dismiss() }) {
+                    Button(action: {
+                        dismiss()
+                    }) {
                         Text("Cancel")
                     }
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: {}) {
+                    Button(action: {
+                        dismiss()
+                    }) {
                         Text("Post")
                     }
                     .disabled(caption.isEmpty)

@@ -13,8 +13,8 @@ struct ContentView: View {
     
     var body: some View {
         Group {
-            if let currentUserID = authManager.currentUserID {
-               UserProfileView()
+            if authManager.currentUserID != nil {
+                MainTabBar()
             } else {
                 LoginView()
             }

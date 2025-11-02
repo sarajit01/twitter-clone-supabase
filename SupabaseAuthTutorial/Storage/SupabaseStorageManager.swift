@@ -24,7 +24,18 @@ struct SupabaseStorageManager {
         do {
             let path = "\(user.id)/avatar.jpg" ;
             
-            try await client.storage.from("avatars").upload(path, data: imageData)
+
+            if (user.profileImageUrl == nil) {
+                print("Profile image not present. Uploading new one.")
+                try await client.storage.from("avatars")
+                    .upload(path,data: imageData)
+            } else {
+                
+                print("Profile image already present. Updating existing one.")
+                try await client.storage.from("avatars")
+                    .update(path,data: imageData, options: FileOptions(upsert: true))
+            }
+            
             let publicUrl = try client.storage.from("avatars").getPublicURL(path: path)
             print("Debug Profile photo uploaded. Public URL: \(publicUrl.absoluteString)")
             
